@@ -2,7 +2,7 @@
 
 This repository is a process template for running research projects with Codex. It is not a runnable project by itself. The main value is the instruction scaffold in `AGENTS.md`, plus a small set of repo-local skills that help initialize, maintain, and review a research workflow.
 
-Edit `.agents/templates/research-base.md` for reusable methodology; edit Section 8 in `AGENTS.md` for project-specific setup.
+Edit `.agents/templates/research-base.md` for reusable methodology; let `$setup_research_plan` fill Section 8 in `AGENTS.md` for project-specific setup.
 
 This template supports one root `AGENTS.md`. Do not create multiple root instruction files; use `.agents/templates/research-base.md` as the reusable source template, and keep project-specific instructions in the single root `AGENTS.md`.
 
@@ -27,9 +27,9 @@ Use this template if you want Codex to act like a disciplined research agent rat
 ## Quick Start
 
 1. Open the repository in Codex.
-2. Edit `AGENTS.md` and fill in `## 8. Project Instructions`.
-3. Add or point to the actual codebase and evaluation command for your project.
-4. Ask Codex to use the setup skill.
+2. Add or point to the actual codebase and evaluation command for your project.
+3. Ask Codex to use the setup skill.
+4. Answer the setup questions; the agent writes `## 8. Project Instructions` into `AGENTS.md`.
 
 Example prompt:
 
@@ -37,7 +37,7 @@ Example prompt:
 Use $setup_research_plan to initialize this repository for my project.
 ```
 
-Section 8 is the part that makes the template project-specific. At minimum, fill in:
+Section 8 is the part that makes the template project-specific. During setup, the agent should gather and write at least:
 
 - research goal
 - primary metric and whether higher or lower is better
@@ -59,12 +59,13 @@ The setup skill is the main entry point. It checks the repository state and hand
 
 For a fresh or partial setup, the intended workflow is:
 
-1. confirm or gather the missing project instructions
-2. inspect the repository
-3. run `uv sync` if `pyproject.toml` exists
-4. run the baseline evaluation from Section 8
-5. create the tracking files and directories
-6. begin the experiment loop
+1. ask the user for the missing project instructions
+2. write Section 8 in `AGENTS.md`
+3. inspect the repository
+4. run `uv sync` if `pyproject.toml` exists
+5. run the baseline evaluation from Section 8
+6. create the tracking files and directories
+7. begin the experiment loop
 
 This template does not include evaluation code. Your project still needs a real codebase and a real eval command.
 
@@ -115,6 +116,8 @@ Use this when:
 - Section 8 is still placeholder text
 - `report.tex` or `TODO.md` does not exist yet
 - you want Codex to resume the project from the current state
+
+When Section 8 is still empty, this skill is responsible for collecting the project details from the user and writing them into the root `AGENTS.md`.
 
 Example:
 
