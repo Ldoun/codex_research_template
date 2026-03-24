@@ -1,6 +1,6 @@
 ---
 name: experiment-setup
-description: Define the experiment contract for semi-autonomous AI/ML research before any baseline run, ablation, reproduction, or metric-driven code change. Use when experiments may happen and Codex must ask the right questions, pin down the metric and eval command, capture constraints and compute budget, draft the project brief and experiment plan, and stop for approval before execution.
+description: Define the experiment contract for semi-autonomous AI/ML research after the background evidence review and before any baseline run, ablation, reproduction, or metric-driven code change. Use when the scope and evidence review are strong enough to support experimentation and Codex must pin down the metric, eval command, constraints, and budget before execution.
 ---
 
 # Experiment Setup
@@ -18,10 +18,10 @@ Trigger when the user asks for:
 - a code change intended to improve a metric
 - experiment planning for an AI/ML question
 
-Do not trigger for purely literature-only work unless the user expands scope toward experiments.
+If the question or hypothesis has not yet been scoped and the background evidence review has not happened, push the task back toward `research-plan` and `research-documentation` instead of guessing the experiment contract.
 
 ## Required workflow
-1. Read the current `research/active-plan.md`, if present, and the user's latest approved scope.
+1. Read the current `research/active-plan.md`, the user's latest approved scope, and any existing `research/evidence_table.md` or `research/analysis/analysis_report.md`.
 2. Ask only the missing questions, grouped into short rounds:
    - goal and deliverable
    - primary metric and exact evaluation command
@@ -52,7 +52,7 @@ Do not trigger for purely literature-only work unless the user expands scope tow
    - initialize `research/TODO.md`
    - initialize `research/experiment_index.md`
    - propose the baseline run as `E000`
-9. Preserve the schema and role of `research/active-plan.md`. Only update it if the user explicitly changes the approved research scope.
+9. Preserve the schema and role of `research/active-plan.md`. Only update it if the user explicitly changes the approved research scope or hypothesis.
 10. Stop and wait for approval before running the baseline or making metric-driven code changes.
 
 ## Setup rules

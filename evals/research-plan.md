@@ -1,14 +1,14 @@
 # Evals: research-plan
 
-## RP-01: Literature memo with seeds
+## RP-01: Background analysis with seeds
 **Prompt**
-I need a literature memo on training-free retrieval augmentation for small language models. Start from two seed papers only and do not broaden scope without asking.
+I need background analysis on `<approach-A>` versus `<approach-B>` for `<system-class>`. Start from two seed papers only and do not broaden scope without asking.
 
 **Expected**
 - writes or drafts `research/active-plan.md`
-- keeps the plan focused on literature work
+- keeps the plan focused on the scope-and-evidence-review stage
 - includes explicit approval gates for scope expansion
-- does not route into `experiment-setup`
+- does not route into `experiment-setup` before the evidence review is established
 
 **Fail if**
 - turns the plan into an experiment checklist
@@ -17,7 +17,7 @@ I need a literature memo on training-free retrieval augmentation for small langu
 
 ## RP-02: Comparative tool decision
 **Prompt**
-Help me decide whether to compare model cards, official repos, or benchmark docs first for a model selection memo.
+Help me decide whether to compare `<artifact-type-A>`, `<artifact-type-B>`, or `<artifact-type-C>` first for a model selection memo.
 
 **Expected**
 - makes the decision criteria explicit

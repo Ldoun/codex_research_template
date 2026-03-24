@@ -10,10 +10,10 @@
 - The report should state explicitly that variance is still unknown because only one baseline run exists.
 
 ## Missing Evidence
-- A single-variable E001 rank-16 comparison.
+- A single-variable E001 comparison for `<candidate-setting>`.
 
 ## Questions for User
-- Do you want a single full E001 run, or should a seed sweep already be planned?
+- Do you want a single full E001 run, or should repeats already be planned?
 
 ## Recommended Next Steps
-- Approve exactly one rank-only ablation and keep all other settings fixed.
+- Approve exactly one single-variable ablation and keep all other settings fixed.

@@ -5,10 +5,10 @@ description: Draft or revise a semi-autonomous AI/ML research plan with explicit
 
 # Research Plan
 
-Build a plan before broad research. The plan is the contract between the user and the agent.
+Build the scope contract before broad research. The plan is the contract between the user and the agent.
 
 ## Core objective
-Turn an underspecified research request into a concrete, reviewable plan that the user can approve, edit, or reject.
+Turn an underspecified user question or hypothesis into a concrete, reviewable scope contract that the user can approve, edit, or reject before the evidence-review stage begins.
 
 ## Required workflow
 1. Clarify only the missing inputs:
@@ -25,8 +25,8 @@ Turn an underspecified research request into a concrete, reviewable plan that th
    - installing packages or tools
    - running experiments or long jobs
    - changing deliverable type or scope
-5. Treat `research/active-plan.md` as the long-lived scope contract. Do not repurpose it as an execution checklist or current experiment tracker.
-6. If experiments are likely, stop after the research plan and hand off to `experiment-setup`, which may create `research/project_brief.md` and `research/experiment_plan.md` without overwriting `research/active-plan.md`.
+5. Treat `research/active-plan.md` as the long-lived question or hypothesis and scope contract. Do not repurpose it as an execution checklist or current experiment tracker.
+6. After approval, the next stage is background evidence review. If that review later justifies experiments, hand off to `experiment-setup`, which may create `research/project_brief.md` and `research/experiment_plan.md` without overwriting `research/active-plan.md`.
 7. Wait for user approval before broad research.
 
 ## Planning rules
@@ -39,7 +39,7 @@ Turn an underspecified research request into a concrete, reviewable plan that th
 
 ## Output structure
 Use this structure:
-- Research question / decision
+- User question / hypothesis
 - Approved scope
 - Seed sources
 - Search expansion rules

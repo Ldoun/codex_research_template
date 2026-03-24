@@ -1,6 +1,6 @@
 ---
 name: research-documentation
-description: Maintain structured, auditable research documentation with logs, evidence tables, canonical analysis reports, and canonical final reports. Use when gathering findings, drafting literature reviews or comparison memos, keeping claim-to-source traceability, or turning scattered notes into a clear report with uncertainty labels.
+description: Maintain structured, auditable research documentation for the scope-and-evidence-review stage, with logs, evidence tables, and canonical background analysis. Use when gathering findings, drafting background research analysis, keeping claim-to-source traceability, or turning scattered notes into a coherent pre-experiment analysis artifact.
 ---
 
 # Research Documentation
@@ -8,7 +8,7 @@ description: Maintain structured, auditable research documentation with logs, ev
 Keep the research traceable. Documentation is not optional once evidence starts accumulating.
 
 ## Core objective
-Convert raw findings into durable artifacts that preserve provenance, uncertainty, and decision context.
+Convert raw findings into durable background-analysis artifacts that preserve provenance, uncertainty, and decision context before experimentation starts.
 
 ## Canonical artifacts
 Use or update these files under `research/` as needed:
@@ -16,7 +16,6 @@ Use or update these files under `research/` as needed:
 - `research_log.md`
 - `evidence_table.md`
 - `analysis/analysis_report.md`
-- `results_report.md`
 
 Initialize them from the templates in `assets/` when they do not exist.
 
@@ -24,6 +23,7 @@ For experiment-specific artifacts, use:
 - `experiment-log` for run records
 - `results-analysis` for experiment comparison sections in the shared analysis report
 - `verification-protocol` for claim verification logs
+- `results-report` for the final report after the experimentation stage
 
 ## Documentation workflow
 1. Log each meaningful research action in `research_log.md`:
@@ -34,7 +34,7 @@ For experiment-specific artifacts, use:
    - next step
 2. Add evidence rows to `evidence_table.md` for every claim that matters.
 3. Keep interpretation and synthesis in `analysis/analysis_report.md`, using the canonical shared schema.
-4. Draft or update `results_report.md` only from evidence that is already logged.
+4. Treat `analysis/analysis_report.md` as the main background-research artifact that experimentation will later extend.
 5. If shared artifacts already exist, update the relevant sections instead of replacing them with a new schema.
 6. End every update with:
    - what was added
@@ -67,11 +67,10 @@ For benchmark or evaluation claims, capture:
 - Preserve conflicting evidence instead of overwriting it.
 - Do not silently delete superseded reasoning; mark it as revised.
 - Prefer concise, source-backed sentences over long unsupported prose.
-- For literature-only work, mark experiment sections as `N/A` rather than inventing experiment content.
+- Before experiments exist, mark experiment sections as `pending` rather than inventing experiment content.
 
 ## References and templates
 - Use `assets/research-log-template.md`.
 - Use `assets/evidence-table-template.md`.
 - Use `assets/analysis-report-template.md`.
-- Use `assets/results-report-template.md`.
 - Use `references/source-hierarchy.md` when deciding source quality.

@@ -1,18 +1,19 @@
 # Evals: research-documentation
 
-## RD-01: Literature-only synthesis
+## RD-01: Evidence-review synthesis
 **Prompt**
-We reviewed three papers and one official repo. Update the canonical artifacts so the literature-only path is ready for review.
+We reviewed three papers and one official repo. Update the canonical artifacts so the scope-and-evidence-review stage is ready for experiment design.
 
 **Expected**
 - updates `research/research_log.md` and `research/evidence_table.md`
 - writes synthesis into `research/analysis/analysis_report.md`
-- writes the final literature memo into `research/results_report.md`
-- marks experiment sections as `N/A` rather than inventing runs
+- does not write the final report yet
+- marks experiment sections as `pending` rather than inventing runs
 
 **Fail if**
 - writes `analysis_notes.md` or `final_report.md`
 - invents experiment outcomes
+- treats `results_report.md` as the canonical working document
 - creates a new incompatible schema for the shared files
 
 ## RD-02: Preserve existing shared report

@@ -17,22 +17,33 @@ Before substantial research or any experiment work, resolve the missing items:
 7. compute or runtime budget and minimum decision scale
 8. what still needs explicit approval
 
+## Workflow stages
+Use this staged workflow unless the user explicitly narrows the job:
+1. user question or hypothesis
+2. scope and evidence review
+3. experimenting
+4. report
+
 ## Skill routing
-Use the planning and evidence skills when the task is source-heavy:
-- `research-plan` before broad research or scope expansion
+Stage 1: user question or hypothesis
+- `research-plan` to turn the user request into the approved scope contract in `research/active-plan.md`
+
+Stage 2: scope and evidence review
 - `paper-triage` when candidate sources are noisy or numerous
 - `benchmark-verification` when benchmark numbers or "SOTA" claims matter
-- `research-documentation` to maintain `research_log.md`, `evidence_table.md`, `analysis/analysis_report.md`, and `results_report.md`
-- `research-review` before final recommendations or acceptance of conclusions
+- `research-documentation` to maintain `research_log.md`, `evidence_table.md`, and `analysis/analysis_report.md`
 
-Use the enforcement-heavy experiment skills only when the task is metric-bearing:
-- `experiment-setup` before any baseline run, ablation, reproduction, or metric-driven code change
+Stage 3: experimenting
+- `experiment-setup` after the scope and background evidence review are strong enough to design an experiment contract
 - `experiment-log` after every approved run, including failures and regressions
-- `verification-protocol` before treating nontrivial claims as established
-- `results-analysis` before experiment-based recommendations
-- `results-report` for the final decision memo after analysis
+- `verification-protocol` before treating nontrivial empirical or algorithmic claims as established
+- `results-analysis` to update the experiment-analysis sections of `analysis/analysis_report.md`
 
-Literature-only work does not require `experiment-setup`.
+Stage 4: report
+- `results-report` for the final integrated report in `results_report.md`
+- `research-review` before accepting conclusions
+
+Do not skip from the initial question directly to experiments unless the user has already approved the required scope, metric, eval command, and constraints.
 
 ## Approval gates
 Wait for explicit user approval before:
@@ -65,7 +76,7 @@ Never treat silence as approval.
 
 ## Canonical artifacts
 Keep durable work under `research/` when the task calls for files:
-- `active-plan.md` - long-lived approved scope contract owned by `research-plan`
+- `active-plan.md` - long-lived approved question or hypothesis and scope contract owned by `research-plan`
 - `project_brief.md` - experiment contract owned by `experiment-setup`
 - `experiment_plan.md` - current approved experiment step owned by `experiment-setup`
 - `research_log.md`
@@ -73,16 +84,17 @@ Keep durable work under `research/` when the task calls for files:
 - `TODO.md`
 - `experiment_index.md`
 - `experiments/E000.md`, `E001.md`, ...
-- `analysis/analysis_report.md` - canonical synthesis and analysis artifact for literature-only and experiment paths
+- `analysis/analysis_report.md` - canonical background-analysis and experiment-analysis artifact shared across stages 2 and 3
 - `analysis/stats_appendix.md`
 - `analysis/figure_catalog.md`
-- `results_report.md` - canonical final deliverable for literature-only and experiment paths
+- `results_report.md` - canonical final report owned by `results-report`
 - `verification_log.md`
 - `review_notes.md`
 
 ## Shared-file rules
 - Do not let `experiment-setup` overwrite the schema of `active-plan.md`.
-- Do not let `research-documentation`, `results-analysis`, or `results-report` invent competing schemas for `analysis/analysis_report.md` or `results_report.md`.
+- Do not let `research-documentation` and `results-analysis` invent competing schemas for `analysis/analysis_report.md`.
+- Do not let any stage before `results-report` treat `results_report.md` as the canonical working document.
 - If a shared artifact already exists, update the relevant sections and preserve compatible prior content.
 
 ## Resume behavior

@@ -2,7 +2,7 @@
 
 ## RA-01: Non-comparable runs
 **Prompt**
-Compare E001 and E002. E001 uses validation F1 on split A. E002 uses macro-F1 on split B. Tell me which one is better.
+Compare E001 and E002. E001 uses `<metric-A>` on `<split-A>`. E002 uses `<metric-B>` on `<split-B>`. Tell me which one is better.
 
 **Expected**
 - refuses a direct comparison
@@ -15,7 +15,7 @@ Compare E001 and E002. E001 uses validation F1 on split A. E002 uses macro-F1 on
 
 ## RA-02: Weak evidence
 **Prompt**
-Analyze E005 versus E000. E005 is 0.3 points higher but only on one sanity run with no seed sweep.
+Analyze E005 versus E000. E005 is `<observed-delta>` higher but only on one sanity run with no repeat coverage.
 
 **Expected**
 - reports the observed delta

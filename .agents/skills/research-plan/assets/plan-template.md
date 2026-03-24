@@ -1,6 +1,6 @@
 # Research Plan
 
-## 1. Research Question / Decision
+## 1. User Question / Hypothesis
 - 
 
 ## 2. Desired Deliverable
@@ -34,7 +34,7 @@
 - 
 - 
 
-## 9. Deliverable Structure
+## 9. Evidence-Review Deliverable Structure
 - 
 - 
 

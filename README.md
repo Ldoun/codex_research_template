@@ -1,6 +1,6 @@
 # Semi-autonomous Codex Research Pack (Template + Enforcement)
 
-This pack keeps the broader semi-autonomous AI/ML research template and adds a lean enforcement layer: a short root `AGENTS.md`, enforcement-heavy experimental skills, canonical shared artifacts, starter research directories, golden examples, and lightweight manual evals.
+This pack keeps the broader semi-autonomous AI/ML research template and adds a lean enforcement layer: a short root `AGENTS.md`, stage-specific research skills, canonical artifacts, starter research directories, golden examples, and lightweight manual evals.
 
 ## Assumptions
 - Runtime: Codex CLI / Codex-compatible skills
@@ -25,63 +25,72 @@ codex --sandbox read-only --ask-for-approval on-request
 
 ## Suggested first prompt
 ```text
-Read AGENTS.md and summarize the loaded skills. Use research-plan to scope the task with me. If experiments are in scope, hand off to experiment-setup and wait for my approval before any baseline run or code changes.
+Read AGENTS.md and summarize the loaded skills. Start from my question or hypothesis, turn it into an approved scope with research-plan, do the background evidence review, then stop for my approval before experiment setup or any baseline run.
 ```
 
-## Skill groups
+## Workflow stages
 
-### Planning and evidence skills
-- `research-plan`
-- `research-documentation`
-- `research-review`
-- `paper-triage`
-- `benchmark-verification`
+### 1. User question / hypothesis
+- `research-plan` turns the user's question or hypothesis into an approved scope contract.
 
-### Enforcement-heavy experimental skills
-- `experiment-setup`
-- `experiment-log`
-- `results-analysis`
-- `results-report`
-- `verification-protocol`
+### 2. Scope and evidence review
+- `paper-triage` narrows noisy source sets.
+- `benchmark-verification` checks benchmark comparability before claims are trusted.
+- `research-documentation` maintains the durable background research analysis.
+
+### 3. Experimenting
+- `experiment-setup` defines the experiment contract after the evidence review.
+- `experiment-log` records each approved run.
+- `results-analysis` updates the experiment-analysis sections of the shared analysis artifact.
+- `verification-protocol` verifies important empirical or algorithmic claims.
+
+### 4. Report
+- `results-report` writes the integrated final report.
+- `research-review` red-teams the conclusions before acceptance.
 
 ### Supporting structure
 - `evals/` for lightweight manual skill checks
-- `research/examples/` for end-to-end golden examples
+- `research/examples/` for stage examples and end-to-end golden examples
 - `research/` starter folders for durable artifacts
 
 ## Canonical artifact contract
-- `research/active-plan.md`: long-lived approved scope contract for source-heavy work. Only `research-plan` owns this schema.
+- `research/active-plan.md`: long-lived approved question/hypothesis and scope contract. Only `research-plan` owns this schema.
 - `research/project_brief.md`: experiment contract with metric, eval command, baseline, constraints, and budget.
 - `research/experiment_plan.md`: current approved experiment step. `experiment-setup` owns this schema.
-- `research/analysis/analysis_report.md`: shared analysis artifact used by literature-only and experiment paths.
-- `research/results_report.md`: shared final deliverable used by literature-only and experiment paths.
+- `research/analysis/analysis_report.md`: background research analysis that begins in the evidence-review stage and is extended during experimentation.
+- `research/results_report.md`: final integrated report. `results-report` owns this schema.
 
-The shared analysis and final report files use a single schema so literature work and experiment work can contribute without clobbering one another.
+The analysis artifact is shared across the evidence-review and experimentation stages so background findings and empirical findings stay in one traceable place.
 
-## Intended operating loops
+## Intended operating workflow
 
-### Literature-only loop
-1. scope the task with `research-plan`
-2. use `paper-triage` if the source set is noisy
-3. record findings with `research-documentation`
-4. use `benchmark-verification` for benchmark-sensitive claims
-5. optionally use `verification-protocol` for high-stakes nontrivial claims
-6. red-team the conclusion with `research-review`
+### Stage 1. User question / hypothesis
+1. clarify the exact question or hypothesis
+2. resolve the deliverable, seed sources, constraints, and approval boundaries
+3. write the approved scope contract with `research-plan`
 
-### Experiment-bearing loop
-1. scope the task with `research-plan`
-2. define the experiment contract with `experiment-setup`
-3. run only approved work
-4. record every run with `experiment-log`
-5. analyze outputs with `results-analysis`
-6. verify nontrivial claims with `verification-protocol`
-7. write the decision memo with `results-report`
-8. red-team the conclusion with `research-review`
+### Stage 2. Scope and evidence review
+1. triage sources if the candidate set is noisy
+2. collect traceable evidence and benchmark-comparability notes
+3. maintain `research/research_log.md`, `research/evidence_table.md`, and `research/analysis/analysis_report.md`
+4. stop when the background analysis is strong enough to justify experiment design
 
-Literature-only work must not be forced through `experiment-setup`.
+### Stage 3. Experimenting
+1. convert the approved scope and evidence review into `research/project_brief.md` and `research/experiment_plan.md`
+2. wait for approval before the baseline run or any metric-driven code change
+3. log every approved run with `experiment-log`
+4. update the shared analysis artifact with `results-analysis`
+5. verify important claims with `verification-protocol`
+
+### Stage 4. Report
+1. write `research/results_report.md` with `results-report`
+2. red-team the report with `research-review`
+3. stop with explicit established / uncertain / needs approval sections
+
+For AI/ML work, this template expects background evidence review to feed experimentation rather than act as a separate terminal path by default.
 
 ## Golden examples
-See `research/examples/literature-only/` and `research/examples/experiment-path/` for canonical artifact shapes that later skills and resume behavior can consume.
+See `research/examples/scope-evidence-review/` for the pre-experiment evidence-review snapshot and `research/examples/full-workflow/` for the staged workflow through experimentation and reporting.
 
 ## Design intent
 - Human in the loop

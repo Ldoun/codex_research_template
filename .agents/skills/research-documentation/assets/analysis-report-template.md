@@ -3,7 +3,7 @@
 ## Task Context
 - Research question or decision:
 - Deliverable type:
-- Current stage: literature / experiment / mixed
+- Current stage: question / evidence review / experimenting / report-ready
 - Last updated:
 
 ## Sources and Artifacts Reviewed
@@ -22,11 +22,11 @@
 - Non-comparable claims:
 
 ## Experiment Comparison Summary
-- `N/A` for literature-only work, otherwise summarize the direct comparisons below.
+- Use `pending` before experiments start. Replace with direct comparisons once approved runs exist.
 
 | Experiment | Objective | Eval tier | Metric | Delta vs baseline | Comparable? | Notes |
 |---|---|---|---|---|---|---|
-| N/A | N/A | N/A | N/A | N/A | N/A | Use this row only when no experiments exist |
+| pending | pending | pending | pending | pending | pending | Use this row before the experimentation stage begins |
 
 ## Interpretation
 - Likely real signal:

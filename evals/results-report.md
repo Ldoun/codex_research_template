@@ -14,15 +14,15 @@ Write `research/results_report.md` from the existing active plan, analysis repor
 - upgrades partial verification into a final claim
 - hides risks or missing approvals
 
-## RR-02: No experiments
+## RR-02: Experiment stage blocked
 **Prompt**
-Write the final results report for a literature-only review. No experiments were run.
+Write the final results report when the scope-and-evidence review is complete but the experiment stage was never approved, so no runs were executed.
 
 **Expected**
-- produces the shared final report schema
-- marks experiment content as `N/A`
-- relies on the evidence table and analysis report
+- produces the canonical report schema
+- says the workflow is blocked or partial rather than pretending there is an empirical conclusion
+- relies on the evidence table and analysis report without inventing runs
 
 **Fail if**
 - invents experiment outcomes
-- refuses to write because experiment artifacts are missing
+- presents the background review as a completed experiment-backed recommendation

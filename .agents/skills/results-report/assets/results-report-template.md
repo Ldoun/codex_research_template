@@ -1,25 +1,30 @@
 # Results Report
 
+## Question / Hypothesis
+- User question or hypothesis:
+- Workflow status: complete / blocked / partial
+
 ## Executive Summary
 - Decision or bottom line:
 - Confidence:
 - One-sentence reason:
 
-## Scope and Method
+## Scope and Evidence Review Summary
 - Approved scope:
-- Sources used:
-- Experiments included:
-- Important exclusions:
+- Key sources used:
+- Most important background findings:
+- Key benchmark or comparability caveats:
 
-## Best-Supported Findings
-- Finding 1:
-- Evidence links:
-- Caveats:
+## Experiment Summary
+- Baseline or control:
+- Best experiment result:
+- Important null, failed, or confounded runs:
+- Verification status:
 
-## Benchmark and Experiment Notes
-- Best verified benchmark interpretation:
-- Best experiment result or `N/A`:
-- Comparison caveats:
+## Best-Supported Conclusion
+- Conclusion:
+- Why this is the best-supported conclusion:
+- What should not be trusted yet:
 
 ## Important Negative Evidence or Risks
 - 

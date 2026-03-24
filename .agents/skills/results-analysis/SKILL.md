@@ -8,7 +8,7 @@ description: Produce a strict post-run analysis bundle from experiment logs, met
 Analyze first. Recommend second.
 
 ## Core objective
-Turn raw experiment outputs into an auditable analysis bundle that distinguishes verified signal from exploratory observations and updates the canonical shared analysis artifact.
+Turn raw experiment outputs into an auditable analysis bundle that distinguishes verified signal from exploratory observations and extends the canonical analysis artifact created during the background evidence-review stage.
 
 ## Required workflow
 1. Identify the comparison set:
@@ -30,7 +30,7 @@ Turn raw experiment outputs into an auditable analysis bundle that distinguishes
    - `research/analysis/analysis_report.md`
    - `research/analysis/stats_appendix.md`
    - `research/analysis/figure_catalog.md`
-6. In `analysis_report.md`, preserve the canonical shared schema so literature sections stay readable if they already exist.
+6. In `analysis_report.md`, preserve the canonical shared schema so the background evidence-review sections stay readable if they already exist.
 7. Explicitly label:
    - likely real signal
    - exploratory hints
@@ -48,7 +48,7 @@ Turn raw experiment outputs into an auditable analysis bundle that distinguishes
 - Keep negative results visible.
 - Prefer simple, defensible figures over decorative plots.
 - If a figure cannot be generated, specify exactly what should be plotted and from which files.
-- Do not replace a literature-oriented analysis report with an experiment-only schema.
+- Do not replace a background-analysis report with an experiment-only schema.
 
 ## Output
 The analysis bundle should answer:
