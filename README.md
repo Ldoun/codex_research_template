@@ -1,6 +1,6 @@
 # Semi-autonomous Codex Research Pack (Template + Enforcement)
 
-This pack keeps the broader semi-autonomous AI/ML research template and adds a lean enforcement layer: a short root `AGENTS.md`, stage-specific research skills, canonical artifacts, starter research directories, golden examples, and lightweight manual evals.
+This pack keeps the broader semi-autonomous AI/ML research template and adds a lean enforcement layer: a short root `AGENTS.md`, stage-specific research skills, canonical artifacts, starter research directories, and lightweight manual evals.
 
 ## Assumptions
 - Runtime: Codex CLI / Codex-compatible skills
@@ -50,7 +50,6 @@ Read AGENTS.md and summarize the loaded skills. Start from my question or hypoth
 
 ### Supporting structure
 - `evals/` for lightweight manual skill checks
-- `research/examples/` for stage examples and end-to-end golden examples
 - `research/` starter folders for durable artifacts
 
 ## Canonical artifact contract
@@ -88,9 +87,6 @@ The analysis artifact is shared across the evidence-review and experimentation s
 3. stop with explicit established / uncertain / needs approval sections
 
 For AI/ML work, this template expects background evidence review to feed experimentation rather than act as a separate terminal path by default.
-
-## Golden examples
-See `research/examples/scope-evidence-review/` for the pre-experiment evidence-review snapshot and `research/examples/full-workflow/` for the staged workflow through experimentation and reporting.
 
 ## Design intent
 - Human in the loop
