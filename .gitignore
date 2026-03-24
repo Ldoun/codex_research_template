@@ -206,10 +206,6 @@ marimo/_static/
 marimo/_lsp/
 __marimo__/
 
-# Research outputs
-artifacts/
-logs/
-
 # LaTeX build artifacts
 *.aux
 *.bbl
