@@ -1,6 +1,6 @@
 # Semi-autonomous Codex Research Pack (Template + Enforcement)
 
-This pack keeps the broader semi-autonomous AI/ML research template and adds a lean enforcement layer: a short root `AGENTS.md`, stage-specific research skills, canonical artifacts, starter research directories, and lightweight manual evals.
+This pack keeps the broader semi-autonomous AI/ML research template and adds a lean enforcement layer: a short root `AGENTS.md`, stage-specific research skills, canonical artifacts, and starter research directories.
 
 ## Assumptions
 - Runtime: Codex CLI / Codex-compatible skills
@@ -13,7 +13,6 @@ This pack keeps the broader semi-autonomous AI/ML research template and adds a l
 Unzip this archive at the root of the repository you want Codex to use. The important paths are:
 - `AGENTS.md`
 - `.agents/skills/...`
-- `evals/...`
 - `research/...`
 
 Codex will read `AGENTS.md` before work starts and discover skills from `.agents/skills`.
@@ -49,7 +48,6 @@ Read AGENTS.md and summarize the loaded skills. Start from my question or hypoth
 - `research-review` red-teams the conclusions before acceptance.
 
 ### Supporting structure
-- `evals/` for lightweight manual skill checks
 - `research/` starter folders for durable artifacts
 
 ## Canonical artifact contract
