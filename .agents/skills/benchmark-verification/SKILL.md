@@ -1,6 +1,6 @@
 ---
 name: benchmark-verification
-description: Verify AI/ML benchmark claims against papers, official repos, model cards, evaluation scripts, and benchmark documentation. Use when benchmark tables, leaderboard positions, or “SOTA” claims affect the recommendation and need apples-to-apples verification.
+description: Verify AI/ML benchmark claims against papers, official repos, model cards, evaluation scripts, and benchmark documentation. Use when benchmark tables, leaderboard positions, or "SOTA" claims affect the recommendation and need apples-to-apples verification.
 ---
 
 # Benchmark Verification
@@ -32,7 +32,7 @@ Decide whether a benchmark claim is directly comparable, partially comparable, o
 ## Required cautions
 - Do not treat third-party leaderboard rows as sufficient by themselves.
 - Do not merge paper numbers and repo numbers without noting the difference.
-- Do not call something “SOTA” without the benchmark scope and date context.
+- Do not call something "SOTA" without the benchmark scope and date context.
 - If the metric or split differs, say the comparison is not direct.
 - If the evaluation harness is unknown, lower confidence.
 

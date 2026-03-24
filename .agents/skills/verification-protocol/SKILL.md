@@ -29,11 +29,13 @@ Create a verification trail that says exactly what was checked, how it was check
 7. Add unresolved items to `research/TODO.md`.
 
 ## Verification rules
+- Prefer runnable checks when they are feasible.
 - Do not treat prose explanation as sufficient verification when a runnable check is possible.
 - Try to break the claim; do not only confirm it.
 - Keep the exact scope of the claim narrow and explicit.
-- If the check is missing, broken, or partial, say so directly.
+- If the check is missing, broken, partial, or blocked, say so directly.
 - Link the verdict back to experiment IDs, source artifacts, or code paths.
+- Never upgrade a weakly checked claim into a fact.
 
 ## Output
 For each claim, record:

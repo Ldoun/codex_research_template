@@ -1,4 +1,4 @@
-# Active Research Plan
+# Research Plan
 
 ## 1. Research Question / Decision
 - 
@@ -40,7 +40,7 @@
 
 ## 10. Approval Gates
 - [ ] Broaden beyond seed sources
-- [ ] Enable web/network-heavy search
+- [ ] Enable web or network-heavy search
 - [ ] Install packages or tools
 - [ ] Run experiments or long jobs
 - [ ] Change scope or deliverable type

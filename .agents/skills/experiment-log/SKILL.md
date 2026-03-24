@@ -1,6 +1,6 @@
 ---
 name: experiment-log
-description: Record every approved baseline, experiment, ablation, failure, or reproduction attempt as a durable Markdown artifact. Use after any run or code change intended to affect a metric, especially when experiment continuity matters across sessions and the team needs a trustworthy per-run history.
+description: Record every approved baseline, experiment, ablation, failure, regression, or reproduction attempt as a durable Markdown artifact. Use after any run or code change intended to affect a metric, especially when experiment continuity matters across sessions and the team needs a trustworthy per-run history.
 ---
 
 # Experiment Log
@@ -30,6 +30,7 @@ Create or update durable experiment records that preserve what changed, how it w
    - metric outcome
    - delta vs baseline or control
    - key observations
+   - missing outputs or anomalies
    - next action
 6. Update `research/experiment_index.md`.
 7. Update `research/TODO.md` when the run creates new follow-up work.

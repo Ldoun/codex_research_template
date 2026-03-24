@@ -1,11 +1,11 @@
-# Semi-autonomous Codex Research Pack
+# Semi-autonomous Codex Research Pack (Template + Enforcement)
 
-This pack is a Codex-native starter for semi-autonomous AI/ML research. It keeps the human in the loop and adds a lean experimental workflow on top of the earlier plan / documentation / review skills.
+This pack keeps the broader semi-autonomous AI/ML research template and adds a lean enforcement layer: a short root `AGENTS.md`, enforcement-heavy experimental skills, canonical shared artifacts, starter research directories, golden examples, and lightweight manual evals.
 
 ## Assumptions
 - Runtime: Codex CLI / Codex-compatible skills
-- Operating style: human-in-the-loop, not full autonomy
-- Research domain: ML/AI papers, repos, benchmarks, model cards, eval claims, and small-to-medium experiment workflows
+- Operating style: human in the loop, not full autonomy
+- Research domain: AI/ML papers, repos, benchmarks, model cards, eval claims, and small-to-medium experiment workflows
 - External APIs: not assumed
 - Default posture: ask before broad search, installs, baseline runs, experiments, or network-heavy work
 
@@ -13,6 +13,8 @@ This pack is a Codex-native starter for semi-autonomous AI/ML research. It keeps
 Unzip this archive at the root of the repository you want Codex to use. The important paths are:
 - `AGENTS.md`
 - `.agents/skills/...`
+- `evals/...`
+- `research/...`
 
 Codex will read `AGENTS.md` before work starts and discover skills from `.agents/skills`.
 
@@ -23,26 +25,50 @@ codex --sandbox read-only --ask-for-approval on-request
 
 ## Suggested first prompt
 ```text
-Read AGENTS.md. Use research-plan to scope the task with me. If experiments are likely, hand off to experiment-setup and wait for my approval before any baseline run or code changes.
+Read AGENTS.md and summarize the loaded skills. Use research-plan to scope the task with me. If experiments are in scope, hand off to experiment-setup and wait for my approval before any baseline run or code changes.
 ```
 
-## Files included
+## Skill groups
 
-### Core research skills
+### Planning and evidence skills
 - `research-plan`
 - `research-documentation`
 - `research-review`
 - `paper-triage`
 - `benchmark-verification`
 
-### Core experimental additions
+### Enforcement-heavy experimental skills
 - `experiment-setup`
 - `experiment-log`
 - `results-analysis`
 - `results-report`
 - `verification-protocol`
 
-## Intended operating loop
+### Supporting structure
+- `evals/` for lightweight manual skill checks
+- `research/examples/` for end-to-end golden examples
+- `research/` starter folders for durable artifacts
+
+## Canonical artifact contract
+- `research/active-plan.md`: long-lived approved scope contract for source-heavy work. Only `research-plan` owns this schema.
+- `research/project_brief.md`: experiment contract with metric, eval command, baseline, constraints, and budget.
+- `research/experiment_plan.md`: current approved experiment step. `experiment-setup` owns this schema.
+- `research/analysis/analysis_report.md`: shared analysis artifact used by literature-only and experiment paths.
+- `research/results_report.md`: shared final deliverable used by literature-only and experiment paths.
+
+The shared analysis and final report files use a single schema so literature work and experiment work can contribute without clobbering one another.
+
+## Intended operating loops
+
+### Literature-only loop
+1. scope the task with `research-plan`
+2. use `paper-triage` if the source set is noisy
+3. record findings with `research-documentation`
+4. use `benchmark-verification` for benchmark-sensitive claims
+5. optionally use `verification-protocol` for high-stakes nontrivial claims
+6. red-team the conclusion with `research-review`
+
+### Experiment-bearing loop
 1. scope the task with `research-plan`
 2. define the experiment contract with `experiment-setup`
 3. run only approved work
@@ -52,15 +78,14 @@ Read AGENTS.md. Use research-plan to scope the task with me. If experiments are 
 7. write the decision memo with `results-report`
 8. red-team the conclusion with `research-review`
 
-## What this pack intentionally does **not** assume
-- external APIs
-- Zotero or Obsidian
-- Docker / Apptainer
-- cloud schedulers
-- a specific ML framework beyond ordinary repo-local commands
+Literature-only work must not be forced through `experiment-setup`.
 
-## What to customize next
-1. default deliverable type
-2. preferred evaluation stack and repo commands
-3. strictness around benchmark evidence
-4. whether to add a dedicated reproduction-planning skill later
+## Golden examples
+See `research/examples/literature-only/` and `research/examples/experiment-path/` for canonical artifact shapes that later skills and resume behavior can consume.
+
+## Design intent
+- Human in the loop
+- Codex-native
+- No API dependency assumed
+- No container, database, or external knowledge tool required by default
+- Research quality and traceability matter more than autonomy

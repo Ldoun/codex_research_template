@@ -1,135 +1,106 @@
 # AGENTS.md
 
-This repository uses **semi-autonomous AI/ML research with Codex**. The user stays in the loop. Do not behave like a fully autonomous research lab.
-
 ## Operating mode
-- Start consultative and read-only when possible.
-- Ask only the missing questions.
-- Treat the user's latest approved scope as the controlling brief.
-- Assume no external APIs, containers, Zotero, Obsidian, databases, or hosted services unless the user explicitly approves them.
-- Prefer repo-local files, instruction-only skills, and auditable Markdown artifacts.
+- This repository uses semi-autonomous AI/ML research with Codex.
+- Keep the user in the loop. Ask targeted questions before broadening scope or running experiments.
+- Keep this file short. Put repeatable workflows in skills, not here.
+- Assume no external APIs, containers, hosted tools, Zotero, or Obsidian unless the user explicitly approves them.
 
-## Mandatory first-turn questions
-Before broad research or any experiment work, confirm the minimum missing items:
-1. the exact research question, hypothesis, or decision to support
-2. the desired deliverable: memo, literature review, benchmark audit, reproduction plan, experiment report, or other
-3. the preferred starting points: papers, repos, benchmarks, model families, authors, datasets, or code paths
-4. whether experiments are in scope; if yes, the primary metric and exact evaluation command
-5. the current baseline, if known
-6. fixed constraints, off-limits files, and prohibited source types
-7. compute budget, runtime budget, and minimum decision scale for drawing conclusions
-8. what would count as a useful answer for the user
+## Resolve before deep work
+Before substantial research or any experiment work, resolve the missing items:
+1. exact research question or decision to support
+2. desired deliverable
+3. approved seed sources, repos, code paths, benchmarks, papers, or authors
+4. whether experiments are in scope
+5. if experiments are in scope: primary metric, exact evaluation command, and known baseline
+6. fixed constraints, off-limits files, and forbidden shortcuts
+7. compute or runtime budget and minimum decision scale
+8. what still needs explicit approval
 
-If the task is literature-only, items 4-7 may stay deferred until the user expands scope.
+## Skill routing
+Use the planning and evidence skills when the task is source-heavy:
+- `research-plan` before broad research or scope expansion
+- `paper-triage` when candidate sources are noisy or numerous
+- `benchmark-verification` when benchmark numbers or "SOTA" claims matter
+- `research-documentation` to maintain `research_log.md`, `evidence_table.md`, `analysis/analysis_report.md`, and `results_report.md`
+- `research-review` before final recommendations or acceptance of conclusions
 
-## Required workflow
-1. Use `research-plan` before any substantial research or implementation.
-2. Use `experiment-setup` before any baseline run, metric-driven code change, ablation, reproduction, or approved experiment.
-3. Use `paper-triage` when the source set is large or noisy.
-4. Use `benchmark-verification` whenever benchmark numbers or “SOTA” claims affect the conclusion.
-5. Use `experiment-log` after every approved run, including the baseline and failed runs.
-6. Use `results-analysis` before interpreting experiment outcomes or comparing runs.
-7. Use `verification-protocol` before treating nontrivial algorithmic, mathematical, or evaluation claims as established.
-8. Use `results-report` for the decision-oriented summary after analysis.
-9. Use `research-documentation` to keep evidence, notes, and synthesis traceable.
-10. Use `research-review` before final recommendations or before calling the work complete.
+Use the enforcement-heavy experiment skills only when the task is metric-bearing:
+- `experiment-setup` before any baseline run, ablation, reproduction, or metric-driven code change
+- `experiment-log` after every approved run, including failures and regressions
+- `verification-protocol` before treating nontrivial claims as established
+- `results-analysis` before experiment-based recommendations
+- `results-report` for the final decision memo after analysis
+
+Literature-only work does not require `experiment-setup`.
 
 ## Approval gates
 Wait for explicit user approval before:
-- broadening beyond seed sources
-- enabling web/network-heavy search beyond the approved plan
+- broadening beyond approved seed sources
+- enabling web or network-heavy search beyond the approved plan
 - installing packages or enabling new integrations
-- running baseline evaluation, benchmarks, reproductions, or long jobs
-- changing the primary metric, evaluation command, dataset/split, or deliverable type
+- running a baseline, benchmark, reproduction, or long job
+- changing the metric, evaluation command, dataset or split, or deliverable
 - editing files outside the approved workspace
 - using third-party APIs, hosted services, or cloud compute
 
 Never treat silence as approval.
 
-## Experiment integrity rules
-- **Never manipulate evaluation.** Do not change the metric, dataset split, eval harness, or fixed constraints to make results look better.
-- **Baseline first.** Establish or confirm a baseline before claiming improvement.
-- **One variable per experiment.** If multiple things changed, mark the result as confounded.
-- **Evaluate in tiers.** Use smoke checks first, then small-scale sanity checks, then the full approved evaluation.
-- **Small-scale is for debugging.** Do not draw research conclusions below the approved minimum decision scale.
-- **Record everything.** Log failures, regressions, and abandoned branches; do not keep only “good” runs.
-- **Verify before claiming.** Prefer runnable checks, targeted counterexamples, or explicit validation procedures over prose confidence.
-- **Never fabricate citations.** Verify bibliographic details against a primary source before using them.
-- **Keep context exact.** For AI/ML claims, preserve dataset, split, metric, prompting/eval setup, code path, model version, and date/commit context.
-- **Surface uncertainty.** If evidence is weak, conflicting, or exploratory, say so directly.
+## Experiment rules
+- Baseline first.
+- One variable per experiment; otherwise mark the run confounded.
+- Evaluate in tiers: smoke, sanity, then full.
+- Small-scale runs are for debugging only, not for conclusions.
+- Never manipulate evaluation.
+- Log failures and regressions, not only wins.
+- Preserve exact context: dataset, split, metric, prompting or eval setup, model version, code path, commit, and date.
+- Verify before claiming.
+- Never fabricate citations.
 
-## Evidence policy
-- Prefer primary sources: papers, official repositories, model cards, benchmark documentation, official issue threads, and official release notes.
-- Record clear claim-to-source mapping.
-- Separate:
-  - **Verified fact**
-  - **Interpretation**
-  - **Open question / uncertainty**
-- Do not present benchmark numbers as directly comparable until metric, dataset version/split, evaluation setup, and provenance have been checked.
-- If sources conflict, surface the conflict explicitly instead of silently averaging or merging claims.
-- If evidence is weak, say so directly.
+## Evidence rules
+- Prefer primary sources: papers, official repositories, model cards, benchmark docs, official issues, and release notes.
+- Separate verified fact, interpretation, and open question.
+- Do not treat benchmark numbers as directly comparable until metric, dataset version or split, evaluation setup, and provenance have been checked.
+- Surface conflicts and uncertainty directly.
 
-## Persistent artifacts
-Store durable work under `research/` when the task calls for files:
-- `research/active-plan.md`
-- `research/project_brief.md`
-- `research/research_log.md`
-- `research/evidence_table.md`
-- `research/TODO.md`
-- `research/experiment_index.md`
-- `research/experiments/E000.md`, `E001.md`, ...
-- `research/analysis/analysis_report.md`
-- `research/analysis/stats_appendix.md`
-- `research/analysis/figure_catalog.md`
-- `research/results_report.md`
-- `research/verification_log.md`
-- `research/review_notes.md`
-
-If the user wants a lighter workflow, keep the same structure in chat.
-
-## Resume behavior
-When the repository already contains research artifacts, read the latest relevant files before proposing next steps:
-- `project_brief.md`
-- `active-plan.md`
+## Canonical artifacts
+Keep durable work under `research/` when the task calls for files:
+- `active-plan.md` - long-lived approved scope contract owned by `research-plan`
+- `project_brief.md` - experiment contract owned by `experiment-setup`
+- `experiment_plan.md` - current approved experiment step owned by `experiment-setup`
+- `research_log.md`
+- `evidence_table.md`
 - `TODO.md`
 - `experiment_index.md`
-- the most recent experiment entries
-- `analysis_report.md`
-- `results_report.md`
+- `experiments/E000.md`, `E001.md`, ...
+- `analysis/analysis_report.md` - canonical synthesis and analysis artifact for literature-only and experiment paths
+- `analysis/stats_appendix.md`
+- `analysis/figure_catalog.md`
+- `results_report.md` - canonical final deliverable for literature-only and experiment paths
 - `verification_log.md`
+- `review_notes.md`
 
-Summarize:
-- the best **verified** result so far
-- what was tried last
-- what remains blocked or uncertain
-- what still needs user approval
+## Shared-file rules
+- Do not let `experiment-setup` overwrite the schema of `active-plan.md`.
+- Do not let `research-documentation`, `results-analysis`, or `results-report` invent competing schemas for `analysis/analysis_report.md` or `results_report.md`.
+- If a shared artifact already exists, update the relevant sections and preserve compatible prior content.
 
-## Interaction rules
-- Ask targeted, high-value questions only.
-- Prefer proposing 2-4 concrete starting options over vague open-ended prompts.
-- End meaningful turns with:
-  - what is established
-  - what remains uncertain
-  - what needs user approval
-- Keep research traceable. Do not hide assumptions.
+## Resume behavior
+On resume, read the latest relevant research artifacts before proposing next steps:
+- `active-plan.md`
+- `project_brief.md`, if present
+- `experiment_plan.md`, if present
+- `research_log.md`, if present
+- `evidence_table.md`, if present
+- `TODO.md`, if present
+- `experiment_index.md`, if present
+- the most recent experiment entries, if present
+- `analysis/analysis_report.md`, if present
+- `results_report.md`, if present
+- `verification_log.md`, if present
 
-## ML/AI-specific rules
-- Capture the exact benchmark context: dataset, split, metric, prompting/eval setup, code path or script, model version, and date/version of the source.
-- Distinguish claims from:
-  - paper
-  - official repo
-  - model card
-  - benchmark site
-  - third-party blog or commentary
-- Treat “SOTA” as a claim that requires context, not as a fact.
-- Prefer apples-to-apples comparisons over bigger but incomparable score tables.
-- Report negative results and regressions when they change the interpretation of the research path.
-
-## Scope and safety
-- Avoid destructive repo actions unless explicitly requested.
-- Do not install dependencies, run long jobs, or request network access without approval.
-- Do not imply certainty beyond the evidence.
-- Preserve citations and traceability in every research artifact.
-
-## Updating guidance
-When the user corrects a recurring behavior or adds a stable preference, update `AGENTS.md` or the relevant skill so the correction persists.
+## End-of-turn structure
+For meaningful research turns, end with:
+- established
+- uncertain
+- needs approval

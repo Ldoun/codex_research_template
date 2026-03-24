@@ -14,11 +14,13 @@ Decide whether the current research artifact is ready to trust, needs revision, 
 Review whichever artifacts exist and matter for the current stage:
 - `research/active-plan.md`
 - `research/project_brief.md`
+- `research/experiment_plan.md`
 - `research/research_log.md`
 - `research/evidence_table.md`
 - `research/experiment_index.md`
 - `research/experiments/*.md`
 - `research/analysis/analysis_report.md`
+- `research/analysis/stats_appendix.md`
 - `research/results_report.md`
 - `research/verification_log.md`
 - `research/review_notes.md`
