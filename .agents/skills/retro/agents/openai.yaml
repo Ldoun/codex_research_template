@@ -1,7 +1,0 @@
-interface:
-  display_name: "Retro"
-  short_description: "Review a research session and improve instructions"
-  default_prompt: "Use $retro to review the current research session and propose concrete improvements to the repository instructions."
-
-policy:
-  allow_implicit_invocation: false
